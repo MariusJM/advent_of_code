@@ -23,7 +23,7 @@ Of the real rooms from the list above, the sum of their sector IDs is 1514.
 
 What is the sum of the sector IDs of the real rooms?
 """
-import re
+import re, os
 from collections import Counter
 
 
@@ -54,9 +54,10 @@ def check_data(input_data):
     return answer
 
 def get_data(file_name):
-    input_file = open(file_name, "r")
-    input_file_read = input_file.read()
-    input_data = input_file_read.splitlines()
+    script_directory = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(script_directory, file_name)
+    with open(file_path, "r") as input_file:
+        input_data = input_file.read().splitlines()
     return input_data
 
 

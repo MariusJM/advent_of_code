@@ -26,6 +26,7 @@ The most common character in the first column is e; in the second, a; in the thi
 
 Given the recording in your puzzle input, what is the error-corrected version of the message being sent?
 """
+import os
 
 def main():
     input_data = get_data("day_06_input.txt")
@@ -51,7 +52,9 @@ def count_characters(data):
 
 
 def get_data(file_name):
-    with open(file_name, "r") as input_file:
+    script_directory = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(script_directory, file_name)
+    with open(file_path, "r") as input_file:
         input_data = input_file.read().splitlines()
     return input_data
 

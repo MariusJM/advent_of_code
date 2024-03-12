@@ -20,6 +20,7 @@ What is the sector ID of the room where
 North Pole objects are stored?
 """
 import re
+import os
 from collections import Counter
 
 
@@ -65,9 +66,10 @@ def get_name_id(input_data):
 
 
 def get_data(file_name):
-    input_file = open(file_name, "r")
-    input_file_read = input_file.read()
-    input_data = input_file_read.splitlines()
+    script_directory = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(script_directory, file_name)
+    with open(file_path, "r") as input_file:
+        input_data = input_file.read().splitlines()
     return input_data
 
 
